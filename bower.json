@@ -2,7 +2,9 @@
   "name": "tanfolyam",
   "private": true,
   "dependencies": {
-    "bootstrap-sass": "~3.3.5"
+    "bootstrap-sass": "~3.3.5",
+    "spectrum": "^1.8.0",
+    "bootstrap-select": "^1.12.2"
   },
   "overrides": {
     "bootstrap-sass": {

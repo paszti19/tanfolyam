@@ -1,7 +1,22 @@
 console.log('\'Allo \'Allo!');
 
+$('.selectpicker').selectpicker({
+  style: 'btn-info',
+  size: 4
+});
+
+
+
+window.setTimeout(() => {
+  $("#favcolor").spectrum('destroy').spectrum({
+    color: "#f00",
+    change: color => {
+      $('body').css('background-color', color.toHexString());
+    }
+  });
+}, 5000);
+
 /*ES6 sample*/
-/*
 var arr = [];
 for (let i = 0; i < 5; i++) {
   arr.push(function () {
@@ -10,9 +25,7 @@ for (let i = 0; i < 5; i++) {
 }
 
 arr[3]();
-*/
 
-/*
 let tomb = [1,2,3];
 
 let t2 = tomb.map(function (x) {
@@ -23,8 +36,6 @@ let t3 = tomb.map(x => 2*x);
 
 console.log(t2);
 console.log(t3);
-*/
-
 
 class Person {
   constructor(firstName = 'Dani', lastName){

@@ -1,19 +1,23 @@
 function validate(event) {
   console.log('validating form...');
 
+  $('.validation').each(function(index, value) {
+    $(this).text('');
+  });
+/*
   var errorMessages = document.getElementsByClassName('validation');
 
   for (var i = 0; i < errorMessages.length; i++) {
     errorMessages[i].innerText = '';
   }
-
+*/
   var invalid = validateRequiredAll('name', 'password', 'email');
 
-  var approved = document.getElementById('approve').checked;
-
+  var approved = $('#approve').attr('checked');
+console.log(approved);
   if (!approved) {
     invalid = true;
-    document.getElementById('validation-approve').innerText = 'Kötelező mező!';
+    $('#validation-approve').text('Kötelező mező!');
   }
 
   if (invalid) {

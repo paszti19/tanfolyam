@@ -11,6 +11,8 @@
 
     <!-- build:css styles/vendor.css -->
     <!-- bower:css -->
+    <link rel="stylesheet" href="/bower_components/spectrum/spectrum.css" />
+    <link rel="stylesheet" href="/bower_components/bootstrap-select/dist/css/bootstrap-select.css" />
     <!-- endbower -->
     <!-- endbuild -->
 
@@ -70,10 +72,16 @@
           <div class="col-md-12">
             <div class="form-group">
               <label for="interests">Érdeklődés</label>
-              <select name="interests" id="interests" class="form-control" multiple>
+              <select name="interests" id="interests" class="form-control selectpicker" multiple>
                 <option>Állatok</option>
                 <option>Növények</option>
               </select>
+            </div>
+          </div>
+          <div class="col-md-12">
+            <div class="form-group">
+              <label for="favcolor">Kedvenc szín</label>
+              <input type='text' name="favcolor" id="favcolor" />
             </div>
           </div>
           <div class="col-md-12">
@@ -98,6 +106,8 @@
     <!-- build:js scripts/vendor.js -->
     <!-- bower:js -->
     <script src="/bower_components/jquery/dist/jquery.js"></script>
+    <script src="/bower_components/spectrum/spectrum.js"></script>
+    <script src="/bower_components/bootstrap-select/dist/js/bootstrap-select.js"></script>
     <!-- endbower -->
     <!-- endbuild -->
 
