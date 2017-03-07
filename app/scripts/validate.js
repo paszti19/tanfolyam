@@ -8,8 +8,6 @@ function validate(event) {
   }
 
   var invalid = validateRequiredAll('name', 'password', 'email');
-  validateRequired
-
 
   var approved = document.getElementById('approve').checked;
 
