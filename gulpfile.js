@@ -12,6 +12,19 @@ const reload = browserSync.reload;
 var dev = true;
 
 gulp.task('styles', () => {
+  gulp.src('app/lib/phonecaller/*.scss')
+    .pipe($.plumber())
+    .pipe($.if(dev, $.sourcemaps.init()))
+    .pipe($.sass.sync({
+      outputStyle: 'expanded',
+      precision: 10,
+      includePaths: ['.']
+    }).on('error', $.sass.logError))
+    .pipe($.autoprefixer({browsers: ['> 1%', 'last 2 versions', 'Firefox ESR']}))
+    .pipe($.if(dev, $.sourcemaps.write()))
+    .pipe(gulp.dest('.tmp/lib/phonecaller'))
+    .pipe(reload({stream: true}));
+
   return gulp.src('app/styles/*.scss')
     .pipe($.plumber())
     .pipe($.if(dev, $.sourcemaps.init()))
@@ -108,13 +121,14 @@ gulp.task('serve', () => {
     });
 
     gulp.watch([
-      'app/*.html',
+      'app/**/*.html',
       'app/images/**/*',
       '.tmp/fonts/**/*'
     ]).on('change', reload);
 
-    gulp.watch('app/styles/**/*.scss', ['styles']);
-    gulp.watch('app/scripts/**/*.js', ['scripts']);
+
+    gulp.watch('app/**/*.scss', ['styles']);
+    gulp.watch('app/**/*.js', ['scripts']);
     gulp.watch('app/fonts/**/*', ['fonts']);
     gulp.watch('bower.json', ['wiredep', 'fonts']);
   });

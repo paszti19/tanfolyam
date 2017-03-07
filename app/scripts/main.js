@@ -1,5 +1,7 @@
 console.log('\'Allo \'Allo!');
 
+$('#phonecallerWrapper').phonecaller();
+
 $('.selectpicker').selectpicker({
   style: 'btn-info',
   size: 4
