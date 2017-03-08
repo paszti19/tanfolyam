@@ -1,4 +1,6 @@
 function validate(event) {
+  event.preventDefault();
+
   console.log('validating form...');
 
   $('.validation').each(function(index, value) {
@@ -13,16 +15,27 @@ function validate(event) {
 */
   var invalid = validateRequiredAll('name', 'password', 'email');
 
-  var approved = $('#approve').attr('checked');
-console.log(approved);
+  var approved = $('#approve').prop('checked');
+
   if (!approved) {
     invalid = true;
     $('#validation-approve').text('Kötelező mező!');
   }
 
-  if (invalid) {
-    event.preventDefault();
+  console.log('invalid: ' + invalid);
+
+  if (!invalid) {
+    $.ajax({
+      url: 'http://oktatas.infernus.me/register.php',
+      type: 'post',
+      complete: () => {
+        console.log('complete');
+        //$(this).removeAttr('disabled');
+      }
+    });
   }
+
+
 }
 
 function validateRequired(id) {
