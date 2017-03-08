@@ -2,6 +2,12 @@
  * Created by AngularJS on 2017.03.07..
  */
 
+jQuery.noConflict();
+
+(function() {
+
+})();
+
 $.fn.phonecaller = function() {
   let countryCode = '';
   let number = '';
@@ -32,4 +38,5 @@ $.fn.phonecaller = function() {
     });
   });
 
+  return this;
 }
