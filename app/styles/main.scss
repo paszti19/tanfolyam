@@ -118,3 +118,7 @@ p.validation2{
 .error > p{
   width: 10px !important;
 }
+
+[ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak {
+  display: none !important;
+}

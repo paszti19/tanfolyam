@@ -23,23 +23,17 @@
   <!-- endbuild -->
 
 </head>
-<body>
+<body ng-app="tanfolyamApp" ng-cloak>
 <!--[if IE]>
 <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade
   your browser</a> to improve your experience.</p>
 <![endif]-->
 
-<div class="container">
+<div class="container" ng-controller="mainController as mainVm">
   <div class="header">
     <ul class="nav nav-pills pull-right">
-      <li class="active">
-        <a href="#">Home</a>
-      </li>
-      <li>
-        <a href="#">About</a>
-      </li>
-      <li>
-        <a href="#">Contact</a>
+      <li ng-class="{'active': $index == 0}" ng-repeat="item in mainVm.menuItems track by item.id">
+        <a href="#">{{ item.title }}</a>
       </li>
     </ul>
     <h3 class="text-muted">tanfolyam</h3>
@@ -124,6 +118,7 @@
 <script src="/bower_components/jquery/dist/jquery.js"></script>
 <script src="/bower_components/spectrum/spectrum.js"></script>
 <script src="/bower_components/bootstrap-select/dist/js/bootstrap-select.js"></script>
+<script src="/bower_components/angular/angular.js"></script>
 <!-- endbower -->
 <!-- endbuild -->
 
@@ -148,6 +143,7 @@
 <script src="scripts/main.js"></script>
 <!-- endbuild -->
 
+<script src="scripts/main/mainController.js"></script>
 <script src="scripts/validate.js"></script>
 </body>
 </html>

@@ -88,6 +88,7 @@ $('.phonecaller-wrapper').phonecaller({
 
 
 
+var app = angular.module('tanfolyamApp', []);
 
 
 
