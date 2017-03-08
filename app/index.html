@@ -1,148 +1,153 @@
 <!doctype html>
 <html lang="">
-  <head>
-    <meta charset="utf-8">
-    <meta name="description" content="">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>tanfolyam</title>
+<head>
+  <meta charset="utf-8">
+  <meta name="description" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>tanfolyam</title>
 
-    <link rel="apple-touch-icon" href="apple-touch-icon.png">
-    <!-- Place favicon.ico in the root directory -->
+  <link rel="apple-touch-icon" href="apple-touch-icon.png">
+  <!-- Place favicon.ico in the root directory -->
 
-    <!-- build:css styles/vendor.css -->
-    <!-- bower:css -->
-    <link rel="stylesheet" href="/bower_components/spectrum/spectrum.css" />
-    <link rel="stylesheet" href="/bower_components/bootstrap-select/dist/css/bootstrap-select.css" />
-    <!-- endbower -->
-    <!-- endbuild -->
+  <!-- build:css styles/vendor.css -->
+  <!-- bower:css -->
+  <link rel="stylesheet" href="/bower_components/spectrum/spectrum.css" />
+  <link rel="stylesheet" href="/bower_components/bootstrap-select/dist/css/bootstrap-select.css" />
+  <!-- endbower -->
+  <!-- endbuild -->
 
-    <!-- build:css styles/main.css -->
-    <link rel="stylesheet" href="styles/main.css">
-    <!-- endbuild -->
+  <link rel="stylesheet" href="lib/phonecaller/phonecaller.css" />
 
-    <link rel="stylesheet" href="lib/phonecaller/phonecaller.css">
-    <script src="scripts/validate.js"></script>
+  <!-- build:css styles/main.css -->
+  <link rel="stylesheet" href="styles/main.css">
+  <!-- endbuild -->
 
-  </head>
-  <body>
-    <!--[if IE]>
-      <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
-    <![endif]-->
+</head>
+<body>
+<!--[if IE]>
+<p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade
+  your browser</a> to improve your experience.</p>
+<![endif]-->
 
-    <div class="container">
-      <div class="header">
-        <ul class="nav nav-pills pull-right">
-          <li class="active">
-            <a href="#">Home</a>
-          </li>
-          <li>
-            <a href="#">About</a>
-          </li>
-          <li>
-            <a href="#">Contact</a>
-          </li>
-        </ul>
-        <h3 class="text-muted">tanfolyam</h3>
+<div class="container">
+  <div class="header">
+    <ul class="nav nav-pills pull-right">
+      <li class="active">
+        <a href="#">Home</a>
+      </li>
+      <li>
+        <a href="#">About</a>
+      </li>
+      <li>
+        <a href="#">Contact</a>
+      </li>
+    </ul>
+    <h3 class="text-muted">tanfolyam</h3>
+  </div>
+
+  <form novalidate action="index.html" method="post">
+    <div class="row">
+      <div class="col-md-4 col-sm-6">
+        <div class="form-group">
+          <label for="name">Név:</label>
+          <input required type="text" name="name" class="form-control" id="name" placeholder="Név"/>
+          <p class="validation" id="validation-name"></p>
+        </div>
       </div>
-
-      <form action="index.html" method="post"  onsubmit="validate(event);" >
-        <div class="row">
-          <div class="col-md-4 col-sm-6">
-            <div class="form-group">
-              <label for="name">Név:</label>
-              <input type="text" class="form-control" name="name" id="name" placeholder="Név"  />
-              <p class="validation" id="validation-name"></p>
-            </div>
-          </div>
-          <div class="col-md-4 col-sm-6">
-            <div class="form-group">
-              <label for="password">Jelszó:</label>
-              <input type="password" class="form-control" name="password" id="password" placeholder="Jelszó" />
-              <p class="validation" id="validation-password"></p>
-            </div>
-          </div>
-          <div class="col-md-4 col-sm-6">
-            <div class="form-group">
-              <label for="email">E-mail</label>
-              <input type="email" class="form-control" name="email" id="email" placeholder="E-mail">
-              <p class="validation" id="validation-email"></p>
-            </div>
-          </div>
+      <div class="col-md-4 col-sm-6">
+        <div class="form-group">
+          <label for="name">Jelszó:</label>
+          <input required type="password" name="password" class="form-control" id="password" placeholder="Jelszó"/>
+          <p class="validation" id="validation-password"></p>
         </div>
-        <div class="row">
-          <div class="col-md-6">
-            <div class="phonecallerWrapper"></div>
-          </div>
-          <div class="col-md-6">
-            <div class="phonecallerWrapper"></div>
-          </div>
+      </div>
+      <div class="col-md-4 col-sm-6">
+        <div class="form-group">
+          <label for="email">Email address</label>
+          <input type="email" class="form-control" id="email" name="email" placeholder="Email">
+          <p class="validation2" id="validation-email">Hibás formátum!</p>
         </div>
-        <div class="row">
-
-          <div class="col-md-12">
-            <div class="form-group">
-              <label for="interests">Érdeklődés</label>
-              <select name="interests" id="interests" class="form-control selectpicker" multiple>
-                <option>Állatok</option>
-                <option>Növények</option>
-              </select>
-            </div>
-          </div>
-          <div class="col-md-12">
-            <div class="form-group">
-              <label for="favcolor">Kedvenc szín</label>
-              <input type='text' name="favcolor" id="favcolor" />
-            </div>
-          </div>
-
-          <div class="col-md-12">
-            <div class="checkbox">
-              <label>
-                <input type="checkbox" name="approve" id="approve" data-content="Kötelező mező"/> Elfogadom a feltételeket
-              </label>
-              <p class="validation" id="validation-approve"></p>
-            </div>
-          </div>
-          <div class="col-md-12">
-            <button class="btn btn-primary" type="submit">Regisztráció</button>
-          </div>
-        </div>
-      </form>
-
-      <div class="footer">
-        <p>♥ from the Yeoman team</p>
       </div>
     </div>
+    <div class="row">
 
-    <!-- build:js scripts/vendor.js -->
-    <!-- bower:js -->
-    <script src="/bower_components/jquery/dist/jquery.js"></script>
-    <script src="/bower_components/spectrum/spectrum.js"></script>
-    <script src="/bower_components/bootstrap-select/dist/js/bootstrap-select.js"></script>
-    <!-- endbower -->
-    <!-- endbuild -->
+      <div class="col-md-12">
+        <select name="interest" id="interest" multiple>
+          <option>Állatok</option>
+          <option>Olvasás</option>
+          <option>IT világ</option>
+          <option>Pszichológia</option>
+          <option>Tudományok</option>
+        </select>
+      </div>
 
-    <!-- build:js scripts/plugins.js -->
-    <script src="/bower_components/bootstrap-sass/assets/javascripts/bootstrap/affix.js"></script>
-    <script src="/bower_components/bootstrap-sass/assets/javascripts/bootstrap/alert.js"></script>
-    <script src="/bower_components/bootstrap-sass/assets/javascripts/bootstrap/dropdown.js"></script>
-    <script src="/bower_components/bootstrap-sass/assets/javascripts/bootstrap/tooltip.js"></script>
-    <script src="/bower_components/bootstrap-sass/assets/javascripts/bootstrap/modal.js"></script>
-    <script src="/bower_components/bootstrap-sass/assets/javascripts/bootstrap/transition.js"></script>
-    <script src="/bower_components/bootstrap-sass/assets/javascripts/bootstrap/button.js"></script>
-    <script src="/bower_components/bootstrap-sass/assets/javascripts/bootstrap/popover.js"></script>
-    <script src="/bower_components/bootstrap-sass/assets/javascripts/bootstrap/carousel.js"></script>
-    <script src="/bower_components/bootstrap-sass/assets/javascripts/bootstrap/scrollspy.js"></script>
-    <script src="/bower_components/bootstrap-sass/assets/javascripts/bootstrap/collapse.js"></script>
-    <script src="/bower_components/bootstrap-sass/assets/javascripts/bootstrap/tab.js"></script>
-    <!-- endbuild -->
+      <div class="col-md-12">
+        <div class="checkbox">
+          <label>
+            <input data-content="Kötelező mező!" value="X" required type="checkbox" name="approve" id="approve"> Elfogadom a feltételeket
+          </label>
+          <p class="validation" id="validation-approve"></p>
+        </div>
+      </div>
+    </div>
+    <!--<div class="row">
+      <br />
+      <br />
 
-    <script src="lib/phonecaller/phonecaller.js"></script>
+      <div class="col-md-6">
+        <div class="phonecaller-wrapper"></div>
+      </div>
+    </div>
+    <div class="row">
+      <br />
+      <br />
 
-    <!-- build:js scripts/main.js -->
-    <script src="scripts/main.js"></script>
-    <!-- endbuild -->
+      <div class="col-md-6">
+        <div class="phonecaller-wrapper"></div>
+      </div>
+    </div>-->
+    <div class="row">
+      <div class="col-md-12">
+        <button id="btnSubmit" type="submit" class="btn btn-success">Regisztráció</button>
+      </div>
 
+    </div>
+  </form>
 
-  </body>
+  <div class="footer">
+    <p>♥ from the Yeoman team</p>
+  </div>
+</div>
+
+<!-- build:js scripts/vendor.js -->
+<!-- bower:js -->
+<script src="/bower_components/jquery/dist/jquery.js"></script>
+<script src="/bower_components/spectrum/spectrum.js"></script>
+<script src="/bower_components/bootstrap-select/dist/js/bootstrap-select.js"></script>
+<!-- endbower -->
+<!-- endbuild -->
+
+<!-- build:js scripts/plugins.js -->
+<script src="/bower_components/bootstrap-sass/assets/javascripts/bootstrap/affix.js"></script>
+<script src="/bower_components/bootstrap-sass/assets/javascripts/bootstrap/alert.js"></script>
+<script src="/bower_components/bootstrap-sass/assets/javascripts/bootstrap/dropdown.js"></script>
+<script src="/bower_components/bootstrap-sass/assets/javascripts/bootstrap/tooltip.js"></script>
+<script src="/bower_components/bootstrap-sass/assets/javascripts/bootstrap/modal.js"></script>
+<script src="/bower_components/bootstrap-sass/assets/javascripts/bootstrap/transition.js"></script>
+<script src="/bower_components/bootstrap-sass/assets/javascripts/bootstrap/button.js"></script>
+<script src="/bower_components/bootstrap-sass/assets/javascripts/bootstrap/popover.js"></script>
+<script src="/bower_components/bootstrap-sass/assets/javascripts/bootstrap/carousel.js"></script>
+<script src="/bower_components/bootstrap-sass/assets/javascripts/bootstrap/scrollspy.js"></script>
+<script src="/bower_components/bootstrap-sass/assets/javascripts/bootstrap/collapse.js"></script>
+<script src="/bower_components/bootstrap-sass/assets/javascripts/bootstrap/tab.js"></script>
+<!-- endbuild -->
+
+<script type="text/javascript" src="lib/phonecaller/phonecaller.js"></script>
+
+<!-- build:js scripts/main.js -->
+<script src="scripts/main.js"></script>
+<!-- endbuild -->
+
+<script src="scripts/validate.js"></script>
+</body>
 </html>

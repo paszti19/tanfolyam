@@ -91,21 +91,30 @@ body {
   }
 }
 
+.bold{
+  font-weight: bold;
+}
 
-.validation {
+.validation{
   color: red;
 }
+/*
+input[type="checkbox"]:not(:checked):after{
+  content: 'Kötelező';
+  top: 20px;
+  position: absolute;
+  width: 150px;
+}*/
 
-input[type="checkbox"]:not(:checked):after {
-  content: attr(data-content);
+.error p.validation2{
   display: block;
-
 }
 
-.error p.validation2 {
-  display: block;
-}
-
-p.validation2 {
+p.validation2{
   display: none;
+}
+
+
+.error > p{
+  width: 10px !important;
 }

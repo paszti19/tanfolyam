@@ -126,7 +126,6 @@ gulp.task('serve', () => {
       '.tmp/fonts/**/*'
     ]).on('change', reload);
 
-
     gulp.watch('app/**/*.scss', ['styles']);
     gulp.watch('app/**/*.js', ['scripts']);
     gulp.watch('app/fonts/**/*', ['fonts']);
