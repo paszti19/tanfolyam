@@ -1,42 +1,61 @@
-/**
- * Created by AngularJS on 2017.03.07..
- */
+(function($) {
+  $.fn.phonecaller = function(config) {
+    this.each(function(i, instance) {
+      if (typeof config != 'string') {
+        let defaultOptions = {
+          defaultCountryCode: '',
+          change: function(fullNumber) {}
+        };
 
-jQuery.noConflict();
+        let opt = $.extend({}, defaultOptions, config);
 
-(function() {
+        instance.countryCode = opt.defaultCountryCode;
+        instance.number = '';
+        instance.fullNumber = '';
 
-})();
+        let refresh = () => {
+          instance.fullNumber = `+${instance.countryCode} ${instance.number}`;
+          $(instance).find('input').val(instance.fullNumber);
 
-$.fn.phonecaller = function() {
-  let countryCode = '';
-  let number = '';
+          opt.change(instance.fullNumber);
+        };
 
-  let refresh = () => {
-    $(this).find('input').val(`${countryCode} ${number}`);
-  }
+        $.get('lib/phonecaller/phonecaller.html', null, responseText => {
+          $(instance).html(responseText);
 
-  $.get('lib/phonecaller/phonecaller.html', null, responseText => {
-    $(this).html(responseText);
-    $(this).find('select').selectpicker().change(function() {
-      countryCode = $(this).val();
-      refresh();
-    });
+          refresh();
 
-    $(this).find('button').click(function (e) {
-      e.preventDefault();
+          $(instance).find('select')
+            .selectpicker()
+            .selectpicker('val', instance.countryCode)
+            .change(function() {
+              instance.countryCode = $(this).val();
+              refresh();
+            });
 
-      let pushedNumber = $(this).text();
+          $(instance).find('button').click(function (e) {
+            e.preventDefault();
 
-      if ($.isNumeric(pushedNumber)) {
-        number += pushedNumber;
+            let pushedNumber = $(this).text();
+
+            if ($.isNumeric(pushedNumber)) {
+              instance.number += pushedNumber;
+            } else {
+              instance.number = instance.number.slice(0, -1);
+            }
+
+            refresh();
+          });
+        });
       } else {
-        number = number.slice(0, -1);
+        switch (config) {
+          case 'getNumber':
+            return instance.fullNumber;
+            break;
+        }
       }
-
-      refresh();
     });
-  });
 
-  return this;
-}
+    return this;
+  }
+})(jQuery);

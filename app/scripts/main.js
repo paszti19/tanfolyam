@@ -1,6 +1,11 @@
 console.log('\'Allo \'Allo!');
 
-$('#phonecallerWrapper').phonecaller();
+$('.phonecallerWrapper').phonecaller({
+  defaultCountryCode: '36',
+  change: function(fullNumber) {
+    console.log('fullNumber: ' + fullNumber);
+  }
+});
 
 $('.selectpicker').selectpicker({
   style: 'btn-info',
