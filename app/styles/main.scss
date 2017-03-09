@@ -122,3 +122,7 @@ p.validation2{
 [ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak {
   display: none !important;
 }
+
+input.ng-invalid {
+  border: solid 1px red;
+}

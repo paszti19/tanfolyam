@@ -1,4 +1,4 @@
-console.log('\'Allo \'Allo!');
+
 
 // var arr = [];
 // for(let i = 0; i < 5; i++){
@@ -62,7 +62,7 @@ console.log('\'Allo \'Allo!');
   size: 4
 });*/
 
-
+/*
 $("#custom").spectrum({
   color: "#f00",
   move: color => {
@@ -85,10 +85,10 @@ $('.phonecaller-wrapper').phonecaller({
     console.log(num);
   }
 });
+*/
 
 
-
-var app = angular.module('tanfolyamApp', []);
+var app = angular.module('tanfolyamApp', ['ngMessages']);
 
 
 

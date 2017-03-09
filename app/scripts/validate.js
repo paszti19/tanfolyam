@@ -1,3 +1,4 @@
+/*
 $(function(){
 
   $('#btnSubmit').click(function validate(event){
@@ -68,3 +69,4 @@ $(function(){
   }
 
 });
+*/
