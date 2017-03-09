@@ -65,8 +65,19 @@
         <div class="col-md-4 col-sm-6">
           <div class="form-group">
             <label for="password">Jelszó:</label>
-            <input required ng-model="vm.model.password" type="password" name="password" class="form-control" id="password" placeholder="Jelszó"/>
-
+            <input type="password"
+                   name="password"
+                   class="form-control"
+                   id="password"
+                   placeholder="Jelszó"
+                   ng-model="vm.model.password"
+                   ng-required="true"
+                   validate-password=""
+            />
+            <div ng-messages="registrationForm.password.$error" role="alert">
+              <div ng-message="required">Please enter a value for this field.</div>
+              <div ng-message="pw">Nem megfelelő jelszó.</div>
+            </div>
           </div>
         </div>
         <div class="col-md-4 col-sm-6">
@@ -186,6 +197,7 @@
 <script src="scripts/main.js"></script>
 <!-- endbuild -->
 
+<script src="scripts/main/validationDirectives.js"></script>
 <script src="scripts/main/mainFilters.js"></script>
 <script src="scripts/main/mainController.js"></script>
 <script src="scripts/registration/registrationController.js"></script>
