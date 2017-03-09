@@ -58,9 +58,9 @@ console.log('\'Allo \'Allo!');
 // console.log(gabor.getName());
 
 
-$('select[multiple]').selectpicker({
+/*$('select[multiple]').selectpicker({
   size: 4
-});
+});*/
 
 
 $("#custom").spectrum({

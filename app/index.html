@@ -39,74 +39,77 @@
     <h3 class="text-muted">tanfolyam</h3>
   </div>
 
-  <form novalidate action="index.html" method="post">
-    <div class="row">
-      <div class="col-md-4 col-sm-6">
-        <div class="form-group">
-          <label for="name">Név:</label>
-          <input required type="text" name="name" class="form-control" id="name" placeholder="Név"/>
-          <p class="validation" id="validation-name"></p>
+  <div ng-controller="registrationController as vm">
+    <form novalidate action="index.html" method="post" name="registrationForm">
+      <div class="row">
+        <div class="col-md-4 col-sm-6">
+          <div class="form-group">
+            <label for="name">Név:</label>
+            <input required ng-model="vm.model.name" type="text" name="name" class="form-control" id="name" placeholder="Név"/>
+            <p class="validation" id="validation-name"></p>
+            <p>{{ vm.model.name }}</p>
+          </div>
+        </div>
+        <div class="col-md-4 col-sm-6">
+          <div class="form-group">
+            <label for="name">Jelszó:</label>
+            <input required ng-model="vm.model.password" type="password" name="password" class="form-control" id="password" placeholder="Jelszó"/>
+            <p class="validation" id="validation-password"></p>
+          </div>
+        </div>
+        <div class="col-md-4 col-sm-6">
+          <div class="form-group">
+            <label for="email">Email address</label>
+            <input ng-model="vm.model.email" type="email" class="form-control" id="email" name="email" placeholder="Email">
+            <p class="validation2" id="validation-email">Hibás formátum!</p>
+          </div>
         </div>
       </div>
-      <div class="col-md-4 col-sm-6">
-        <div class="form-group">
-          <label for="name">Jelszó:</label>
-          <input required type="password" name="password" class="form-control" id="password" placeholder="Jelszó"/>
-          <p class="validation" id="validation-password"></p>
+      <div class="row">
+
+        <div class="col-md-12">
+          <select name="interest" id="interest" ng-model="vm.model.interest" ng-options="item.value as (item.text | lowercase | unaccent) for item in vm.interestOptions | orderBy: 'text'">
+
+          </select>
+        </div>
+
+        <p>{{ vm.model | json:4 }}</p>
+        <p>{{ vm.name2 }}</p>
+        <p>{{ vm.model.name | lowercase | limitTo:4 }}</p>
+
+        <div class="col-md-12">
+          <div class="checkbox">
+            <label>
+              <input data-content="Kötelező mező!" value="X" required type="checkbox" name="approve" id="approve"> Elfogadom a feltételeket
+            </label>
+            <p class="validation" id="validation-approve"></p>
+          </div>
         </div>
       </div>
-      <div class="col-md-4 col-sm-6">
-        <div class="form-group">
-          <label for="email">Email address</label>
-          <input type="email" class="form-control" id="email" name="email" placeholder="Email">
-          <p class="validation2" id="validation-email">Hibás formátum!</p>
+      <!--<div class="row">
+        <br />
+        <br />
+
+        <div class="col-md-6">
+          <div class="phonecaller-wrapper"></div>
         </div>
       </div>
-    </div>
-    <div class="row">
+      <div class="row">
+        <br />
+        <br />
 
-      <div class="col-md-12">
-        <select name="interest" id="interest" multiple>
-          <option>Állatok</option>
-          <option>Olvasás</option>
-          <option>IT világ</option>
-          <option>Pszichológia</option>
-          <option>Tudományok</option>
-        </select>
-      </div>
-
-      <div class="col-md-12">
-        <div class="checkbox">
-          <label>
-            <input data-content="Kötelező mező!" value="X" required type="checkbox" name="approve" id="approve"> Elfogadom a feltételeket
-          </label>
-          <p class="validation" id="validation-approve"></p>
+        <div class="col-md-6">
+          <div class="phonecaller-wrapper"></div>
         </div>
-      </div>
-    </div>
-    <!--<div class="row">
-      <br />
-      <br />
+      </div>-->
+      <div class="row">
+        <div class="col-md-12">
+          <button id="btnSubmit" type="submit" class="btn btn-success">Regisztráció</button>
+        </div>
 
-      <div class="col-md-6">
-        <div class="phonecaller-wrapper"></div>
       </div>
-    </div>
-    <div class="row">
-      <br />
-      <br />
-
-      <div class="col-md-6">
-        <div class="phonecaller-wrapper"></div>
-      </div>
-    </div>-->
-    <div class="row">
-      <div class="col-md-12">
-        <button id="btnSubmit" type="submit" class="btn btn-success">Regisztráció</button>
-      </div>
-
-    </div>
-  </form>
+    </form>
+  </div>
 
   <div class="footer">
     <p>♥ from the Yeoman team</p>
@@ -143,7 +146,9 @@
 <script src="scripts/main.js"></script>
 <!-- endbuild -->
 
+<script src="scripts/main/mainFilters.js"></script>
 <script src="scripts/main/mainController.js"></script>
+<script src="scripts/registration/registrationController.js"></script>
 <script src="scripts/validate.js"></script>
 </body>
 </html>
