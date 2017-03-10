@@ -1,4 +1,8 @@
-app.controller('mainController', function ($timeout) {
+app.controller('mainController', MainController);
+
+MainController.$inject = ['$timeout'];
+
+function MainController ($timeout) {
   var vm = this;
 
   vm.menuItems = [
@@ -22,4 +26,4 @@ app.controller('mainController', function ($timeout) {
       title: 'Registration'
     });
   }, 3000);
-});
+}

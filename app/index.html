@@ -39,127 +39,7 @@
     <h3 class="text-muted">tanfolyam</h3>
   </div>
 
-  <div ng-controller="registrationController as vm">
-    <form novalidate
-          name="registrationForm"
-          ng-submit="vm.register()"
-    >
-      <div class="row">
-        <div class="col-md-4 col-sm-6">
-          <div class="form-group">
-            <label for="name">Név:</label>
-            <input type="text"
-                   name="name"
-                   class="form-control"
-                   id="name" placeholder="Név"
-                   ng-model="vm.model.name"
-                   ng-required="true"
-                   ng-maxlength="5"
-            />
-            <div ng-messages="registrationForm.name.$error" role="alert">
-              <div ng-message="required">Please enter a value for this field.</div>
-              <div ng-message="maxlength">This field can be at most 5 characters long.</div>
-            </div>
-          </div>
-        </div>
-        <div class="col-md-4 col-sm-6">
-          <div class="form-group">
-            <label for="password">Jelszó:</label>
-            <input type="password"
-                   name="password"
-                   class="form-control"
-                   id="password"
-                   placeholder="Jelszó"
-                   ng-model="vm.model.password"
-                   ng-required="true"
-                   validate-password=""
-            />
-            <div ng-messages="registrationForm.password.$error" role="alert">
-              <div ng-message="required">Please enter a value for this field.</div>
-              <div ng-message="pw">Nem megfelelő jelszó.</div>
-            </div>
-          </div>
-        </div>
-        <div class="col-md-4 col-sm-6">
-          <div class="form-group">
-            <label for="email">Email address</label>
-            <input ng-model="vm.model.email" type="email" class="form-control" id="email" name="email" placeholder="Email">
-            <div ng-messages="registrationForm.email.$error" role="alert">
-              <div ng-message="required">Please enter a value for this field.</div>
-              <div ng-message="email">This field must be a valid email address.</div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="row">
-
-        <div class="col-md-12">
-          <select name="gender"
-                  id="gender"
-                  ng-model="vm.model.gender"
-                  ng-options="item.value as item.text for item in vm.genderOptions"
-                  required
-          >
-
-          </select>
-        </div>
-        <div class="col-md-12">
-          <input type="text"
-                 name="birthName"
-                 id="birthName"
-                 class="form-control"
-                 placeholder="Születési név"
-                 ng-model="vm.model.birthName"
-                 ng-required="vm.model.gender === 1"
-          />
-        </div>
-        <div class="col-md-12">
-          <select name="interest"
-                  id="interest"
-                  ng-model="vm.model.interest"
-                  ng-options="item.value as (item.text | lowercase | unaccent) for item in vm.interestOptions | orderBy: 'text'">
-
-          </select>
-        </div>
-
-        <p>{{ vm.model }}</p>
-
-        <div class="col-md-12">
-          <div class="checkbox">
-            <label>
-              <input data-content="Kötelező mező!" value="X" required type="checkbox" name="approve" id="approve"> Elfogadom a feltételeket
-            </label>
-          </div>
-        </div>
-      </div>
-      <!--<div class="row">
-        <br />
-        <br />
-
-        <div class="col-md-6">
-          <div class="phonecaller-wrapper"></div>
-        </div>
-      </div>
-      <div class="row">
-        <br />
-        <br />
-
-        <div class="col-md-6">
-          <div class="phonecaller-wrapper"></div>
-        </div>
-      </div>-->
-      <div class="row">
-        <div class="col-md-12">
-          <button id="btnSubmit"
-                  type="submit"
-                  class="btn btn-success"
-                  ng-disabled="registrationForm.$invalid"
-          >Regisztráció</button>
-        </div>
-
-      </div>
-    </form>
-  </div>
+  <div ng-include="'templates/registration.html'"></div>
 
   <div class="footer">
     <p>♥ from the Yeoman team</p>
@@ -197,8 +77,8 @@
 <script src="scripts/main.js"></script>
 <!-- endbuild -->
 
-<script src="scripts/main/validationDirectives.js"></script>
 <script src="scripts/main/mainFilters.js"></script>
+<script src="scripts/main/validationDirectives.js"></script>
 <script src="scripts/main/mainController.js"></script>
 <script src="scripts/registration/registrationController.js"></script>
 <script src="scripts/validate.js"></script>
