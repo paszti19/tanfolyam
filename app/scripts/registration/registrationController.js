@@ -1,4 +1,4 @@
-app.controller('registrationController', function ($filter) {
+app.controller('registrationController', function ($filter, $http) {
   var vm = this;
 
   vm.model = {
@@ -26,7 +26,17 @@ app.controller('registrationController', function ($filter) {
 
     console.log(vm.model);
 
-
+    $http.post(
+      'http://localhost:10010/registration',
+      vm.model
+    ).then(
+      function(response) {
+        console.log(response);
+      },
+      function(error) {
+        console.log(error);
+      }
+    );
 
   }
 });
