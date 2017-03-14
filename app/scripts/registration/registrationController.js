@@ -1,5 +1,5 @@
 app.controller('registrationController',
-  function ($filter, registrationRS, userRS, $stateParams, $translate) {
+  function ($filter, registrationRS, userRS, $stateParams, $translate, $scope) {
     var vm = this;
 
     vm.interestOptions = [];
@@ -14,20 +14,28 @@ app.controller('registrationController',
       // "interest": 2
     };
 
-    $translate('REGISTRATION.INTEREST.ANIMALS').then(function () {
-      vm.interestOptions = [
-        {text: $translate.instant('REGISTRATION.INTEREST.ANIMALS'), value: 1},
-        {text: $translate.instant('REGISTRATION.INTEREST.READING'), value: 2},
-        {text: $translate.instant('REGISTRATION.INTEREST.IT'), value: 3},
-        {text: $translate.instant('REGISTRATION.INTEREST.PSYCHOLOGY'), value: 4},
-        {text: $translate.instant('REGISTRATION.INTEREST.SCIENCE'), value: 5}
-      ];
+    function switchLang(){
+      $translate('REGISTRATION.INTEREST.ANIMALS').then(function () {
+        vm.interestOptions = [
+          {text: $translate.instant('REGISTRATION.INTEREST.ANIMALS'), value: 1},
+          {text: $translate.instant('REGISTRATION.INTEREST.READING'), value: 2},
+          {text: $translate.instant('REGISTRATION.INTEREST.IT'), value: 3},
+          {text: $translate.instant('REGISTRATION.INTEREST.PSYCHOLOGY'), value: 4},
+          {text: $translate.instant('REGISTRATION.INTEREST.SCIENCE'), value: 5}
+        ];
 
-      vm.genderOptions = [
-        {text: $translate.instant('REGISTRATION.GENDER.MALE'), value: 0},
-        {text: $translate.instant('REGISTRATION.GENDER.FEMALE'), value: 1}
-      ];
+        vm.genderOptions = [
+          {text: $translate.instant('REGISTRATION.GENDER.MALE'), value: 0},
+          {text: $translate.instant('REGISTRATION.GENDER.FEMALE'), value: 1}
+        ];
+      });
+    }
+    switchLang();
+
+    $scope.$on('language-changed', function () {
+      switchLang();
     });
+
 
     vm.name2 = $filter('unaccent')(vm.model.name);
 

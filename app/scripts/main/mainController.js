@@ -1,9 +1,9 @@
 app.controller('mainController', MainController);
 
-MainController.$inject = ['$translate', '$scope', '$timeout'];
+MainController.$inject = ['$translate', '$scope', '$timeout', '$rootScope'];
 
 
-function MainController($translate, $scope, $timeout) {
+function MainController($translate, $scope, $timeout, $rootScope) {
   var vm = this;
 
   vm.langOptions = [];
@@ -48,9 +48,13 @@ function MainController($translate, $scope, $timeout) {
   $scope.$on('$select.select', function (event, value, index, elem) {
     $translate.use(value).then(function () {
       switchLang();
+      $scope.$broadcast('language-changed', { lang: value });
     });
-
   });
+
+
+
+
 
   //
   // $timeout(() => {
