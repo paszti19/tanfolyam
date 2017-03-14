@@ -8,24 +8,27 @@ function MainController($timeout) {
 
   vm.menuItems = [
     {
-      title: 'Home',
-      id: 1
+      title: 'MENU.HOME',
+      id: 1,
+      state: 'list'
     },
     {
-      title: 'About',
-      id: 2
+      title: 'MENU.REGISTRATION',
+      id: 2,
+      state: 'registration'
     },
     {
-      title: 'Contact',
-      id: 3
+      title: 'MENU.LIST',
+      id: 3,
+      state: 'list'
     }
   ];
-
-  $timeout(() => {
-    vm.menuItems.push({
-      title: 'Registration',
-      id: 4
-    });
-  }, 3000);
+  //
+  // $timeout(() => {
+  //   vm.menuItems.push({
+  //     title: 'Registration',
+  //     id: 4
+  //   });
+  // }, 3000);
 
 }

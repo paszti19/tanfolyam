@@ -37,8 +37,8 @@
   <div class="header">
     <p translate="TEST"></p>
     <ul class="nav nav-pills pull-right">
-      <li ng-class="{'active': $index == 0}" ng-repeat="item in mainVm.menuItems">
-        <a href="#">{{ item.title }}</a>
+      <li ui-sref-active="active" ng-repeat="item in mainVm.menuItems">
+        <a ui-sref="{{ item.state }}">{{ item.title | translate }}</a>
       </li>
     </ul>
     <h3 class="text-muted">tanfolyam</h3>

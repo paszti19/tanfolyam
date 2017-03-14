@@ -130,6 +130,7 @@ app.config(function ($httpProvider) {
 });
 
 app.config(function ($stateProvider, $urlRouterProvider) {
+  $urlRouterProvider.when('', '/list');
   $urlRouterProvider.otherwise('/404');
 
   $stateProvider
