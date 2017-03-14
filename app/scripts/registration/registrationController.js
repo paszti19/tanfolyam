@@ -1,6 +1,9 @@
 app.controller('registrationController',
-  function ($filter, registrationRS, userRS, $stateParams) {
+  function ($filter, registrationRS, userRS, $stateParams, $translate) {
     var vm = this;
+
+    vm.interestOptions = [];
+    vm.genderOptions = [];
 
     vm.model = {
       // "name": "Gábor",
@@ -11,18 +14,20 @@ app.controller('registrationController',
       // "interest": 2
     };
 
-    vm.interestOptions = [
-      {text: 'Állatok', value: 1},
-      {text: 'Olvasás', value: 2},
-      {text: 'IT világ', value: 3},
-      {text: 'Pszichológia', value: 4},
-      {text: 'Tudományok', value: 5}
-    ];
+    $translate('REGISTRATION.INTEREST.ANIMALS').then(function () {
+      vm.interestOptions = [
+        {text: $translate.instant('REGISTRATION.INTEREST.ANIMALS'), value: 1},
+        {text: $translate.instant('REGISTRATION.INTEREST.READING'), value: 2},
+        {text: $translate.instant('REGISTRATION.INTEREST.IT'), value: 3},
+        {text: $translate.instant('REGISTRATION.INTEREST.PSYCHOLOGY'), value: 4},
+        {text: $translate.instant('REGISTRATION.INTEREST.SCIENCE'), value: 5}
+      ];
 
-    vm.genderOptions = [
-      {text: 'Férfi', value: 0},
-      {text: 'Nő', value: 1}
-    ];
+      vm.genderOptions = [
+        {text: $translate.instant('REGISTRATION.GENDER.MALE'), value: 0},
+        {text: $translate.instant('REGISTRATION.GENDER.FEMALE'), value: 1}
+      ];
+    });
 
     vm.name2 = $filter('unaccent')(vm.model.name);
 

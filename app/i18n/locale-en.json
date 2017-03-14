@@ -26,6 +26,13 @@
       "SCIENCE": "Science"
     },
 
+    "VALIDATION": {
+      "REQUIRED": "The field {{field}} is required!",
+      "MAXLENGTH": "The field {{field}} is too long, maximum length: {{x}}",
+      "PW": "Wrong password format!",
+      "EMAIL": "Wrong format!"
+    },
+
     "-------------": "----------------"
   }
 }

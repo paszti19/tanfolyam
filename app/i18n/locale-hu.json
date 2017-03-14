@@ -16,8 +16,8 @@
     "REGISTRATION": "Regisztráció",
 
     "GENDER": {
-      "MALE": "Male",
-      "FEMALE": "Female"
+      "MALE": "Férfi",
+      "FEMALE": "Nő"
     },
 
     "INTEREST": {
@@ -26,6 +26,14 @@
       "IT": "IT világ",
       "PSYCHOLOGY": "Pszichológia",
       "SCIENCE": "Tudományok"
+    },
+
+    "VALIDATION": {
+      "REQUIRED_A": "A {{field}} mező kötelező!",
+      "REQUIRED_AZ": "Az {{field}} mező kötelező!",
+      "MAXLENGTH": "A {{field}} túl hosszú, max. {{x}} karakter lehet.",
+      "PW": "Nem megfelelő jelszó",
+      "EMAIL": "Hibás formátum!"
     },
 
     "-------------": "----------------"
