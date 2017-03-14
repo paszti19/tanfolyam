@@ -1,4 +1,4 @@
-<div ng-controller="registrationController as vm">
+<div ng-controller="registrationController as vm" ng-init="mainVm.onLanguageChange = vm.switchLang">
   <form novalidate name="registrationForm" ng-submit="vm.register()">
     <div class="row">
       <div class="col-md-4 col-sm-6">

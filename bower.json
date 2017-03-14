@@ -13,7 +13,8 @@
     "angular-translate": "^2.15.1",
     "angular-translate-loader-static-files": "^2.15.1",
     "angular-strap": "^2.3.12",
-    "angular-sanitize": "^1.6.3"
+    "angular-sanitize": "^1.6.3",
+    "angular-local-storage": "^0.5.2"
   },
   "overrides": {
     "bootstrap-sass": {

@@ -14,7 +14,7 @@ app.controller('registrationController',
       // "interest": 2
     };
 
-    function switchLang(){
+    vm.switchLang = function(){
       $translate('REGISTRATION.INTEREST.ANIMALS').then(function () {
         vm.interestOptions = [
           {text: $translate.instant('REGISTRATION.INTEREST.ANIMALS'), value: 1},
@@ -29,11 +29,11 @@ app.controller('registrationController',
           {text: $translate.instant('REGISTRATION.GENDER.FEMALE'), value: 1}
         ];
       });
-    }
-    switchLang();
+    };
+    vm.switchLang();
 
     $scope.$on('language-changed', function () {
-      switchLang();
+      vm.switchLang();
     });
 
 

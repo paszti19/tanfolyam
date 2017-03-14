@@ -1,9 +1,9 @@
 app.controller('mainController', MainController);
 
-MainController.$inject = ['$translate', '$scope', '$timeout', '$rootScope'];
+MainController.$inject = ['$translate', '$scope', '$timeout', '$rootScope', 'localStorageService'];
 
 
-function MainController($translate, $scope, $timeout, $rootScope) {
+function MainController($translate, $scope, $timeout, $rootScope, localStorageService) {
   var vm = this;
 
   vm.langOptions = [];
@@ -43,25 +43,30 @@ function MainController($translate, $scope, $timeout, $rootScope) {
     });
   }
 
-  vm.lang = 'hu';
+  vm.lang = localStorageService.get('lang') || 'hu';
+
+  vm.onLanguageChange = () => {};
 
   $scope.$on('$select.select', function (event, value, index, elem) {
     $translate.use(value).then(function () {
+      localStorageService.set('lang', value);
       switchLang();
-      $scope.$broadcast('language-changed', { lang: value });
+      //$scope.$broadcast('language-changed', { lang: value });
+      vm.onLanguageChange();
     });
   });
 
 
 
-
-
-  //
-  // $timeout(() => {
+  // var t = $timeout(() => {
   //   vm.menuItems.push({
   //     title: 'Registration',
   //     id: 4
   //   });
   // }, 3000);
+  //
+  // $scope.$on('$destroy', function () {
+  //
+  // })
 
 }

@@ -87,7 +87,7 @@ $('.phonecaller-wrapper').phonecaller({
 });*/
 
 
-var app = angular.module('tanfolyamApp', ['ngMessages', 'ngResource', 'ui.router', 'ui.grid', 'pascalprecht.translate', 'mgcrea.ngStrap', 'ngSanitize']);
+var app = angular.module('tanfolyamApp', ['ngMessages', 'ngResource', 'ui.router', 'ui.grid', 'pascalprecht.translate', 'mgcrea.ngStrap', 'ngSanitize', 'LocalStorageModule']);
 
 app.config(function (registrationRS3Provider) {
   registrationRS3Provider.setBaseUrl('http://localhost:10010');
@@ -178,8 +178,14 @@ app.config(function ($translateProvider) {
     suffix: '.json'
   });
 
-  $translateProvider.preferredLanguage('hu');
-  $translateProvider.fallbackLanguage('hu');
+  var defaultLang = JSON.parse(localStorage['tanfolyam-.lang']) || 'hu';
+  $translateProvider.preferredLanguage(defaultLang);
+  $translateProvider.fallbackLanguage(defaultLang);
+});
+
+app.config(function (localStorageServiceProvider) {
+  localStorageServiceProvider
+    .setPrefix('tanfolyam-');
 });
 
 
