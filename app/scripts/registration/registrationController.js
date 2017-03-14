@@ -3,12 +3,12 @@ app.controller('registrationController',
     var vm = this;
 
     vm.model = {
-      "name": "Gábor",
-      "password": "asdadAAAA",
-      "email": "asdasd@asdasd.hu",
-      "gender": 0,
-      "birthName": "Gábor",
-      "interest": 2
+      // "name": "Gábor",
+      // "password": "asdadAAAA",
+      // "email": "asdasd@asdasd.hu",
+      // "gender": 0,
+      // "birthName": "Gábor",
+      // "interest": 2
     };
 
     vm.interestOptions = [

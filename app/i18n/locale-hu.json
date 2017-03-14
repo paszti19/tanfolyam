@@ -1,3 +1,33 @@
 {
-  "TEST": "Teszt"
+  "TEST": "Teszt",
+
+  "MENU": {
+    "HOME": "Főoldal",
+    "REGISTRATION": "Regisztráció",
+    "LIST": "Lista"
+  },
+
+  "REGISTRATION": {
+    "NAME": "Név",
+    "PASSWORD": "Jelszó",
+    "EMAIL": "E-mail cím",
+    "BIRTHNAME": "Születési név",
+    "APPROVE": "Elfogadom a feltételeket",
+    "REGISTRATION": "Regisztráció",
+
+    "GENDER": {
+      "MALE": "Male",
+      "FEMALE": "Female"
+    },
+
+    "INTEREST": {
+      "ANIMALS": "Állatok",
+      "READING": "Olvasás",
+      "IT": "IT világ",
+      "PSYCHOLOGY": "Pszichológia",
+      "SCIENCE": "Tudományok"
+    },
+
+    "-------------": "----------------"
+  }
 }

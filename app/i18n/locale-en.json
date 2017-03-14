@@ -1,3 +1,31 @@
 {
-  "TEST": "Test"
+  "TEST": "Test",
+  "MENU": {
+    "HOME": "Home",
+    "REGISTRATION": "Registration",
+    "LIST": "List"
+  },
+  "REGISTRATION": {
+    "NAME": "Name",
+    "PASSWORD": "Password",
+    "EMAIL": "E-mail address",
+    "BIRTHNAME": "Birthname",
+    "APPROVE": "OK",
+    "REGISTRATION": "Registration",
+
+    "GENDER": {
+      "MALE": "Male",
+      "FEMALE": "Female"
+    },
+
+    "INTEREST": {
+      "ANIMALS": "Animals",
+      "READING": "Reading",
+      "IT": "IT world",
+      "PSYCHOLOGY": "Psychology",
+      "SCIENCE": "Science"
+    },
+
+    "-------------": "----------------"
+  }
 }
