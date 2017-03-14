@@ -27,12 +27,18 @@
     },
 
     "VALIDATION": {
-      "REQUIRED": "The field {{field}} is required!",
+      "REQUIRED_A": "The field {{field}} is required!",
+      "REQUIRED_AZ": "The field {{field}} is required!",
       "MAXLENGTH": "The field {{field}} is too long, maximum length: {{x}}",
       "PW": "Wrong password format!",
       "EMAIL": "Wrong format!"
     },
 
     "-------------": "----------------"
+  },
+
+  "LANG": {
+    "EN": "English",
+    "HU": "Hungarian"
   }
 }

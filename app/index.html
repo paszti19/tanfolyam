@@ -35,13 +35,25 @@
 
 <div class="container" ng-controller="mainController as mainVm">
   <div class="header">
-    <p translate="TEST"></p>
     <ul class="nav nav-pills pull-right">
       <li ui-sref-active="active" ng-repeat="item in mainVm.menuItems">
         <a ui-sref="{{ item.state }}">{{ item.title | translate }}</a>
       </li>
     </ul>
-    <h3 class="text-muted">tanfolyam</h3>
+    <h3 class="text-muted">User manager</h3>
+    <div>
+      <button
+        type="button"
+        class="btn btn-default"
+        name="lang"
+        id="lang"
+        ng-model="mainVm.lang"
+        data-html="1"
+        data-toggle="true"
+        bs-options="item.value as item.text for item in mainVm.langOptions"
+        bs-select>
+      </button>
+    </div>
   </div>
 
   <ui-view></ui-view>
