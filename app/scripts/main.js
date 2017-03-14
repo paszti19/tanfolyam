@@ -87,7 +87,7 @@ $('.phonecaller-wrapper').phonecaller({
 });*/
 
 
-var app = angular.module('tanfolyamApp', ['ngMessages', 'ngResource', 'ui.router', 'ui.grid', 'pascalprecht.translate']);
+var app = angular.module('tanfolyamApp', ['ngMessages', 'ngResource', 'ui.router', 'ui.grid', 'pascalprecht.translate', 'mgcrea.ngStrap', 'ngSanitize']);
 
 app.config(function (registrationRS3Provider) {
   registrationRS3Provider.setBaseUrl('http://localhost:10010');

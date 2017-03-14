@@ -51,14 +51,18 @@
     </div>
     <div class="row">
       <div class="col-md-12">
-        <select
+        <button
+          type="button"
+          class="btn btn-default"
           name="gender"
           id="gender"
           ng-model="vm.model.gender"
+          data-html="1"
+          data-toggle="true"
           required
-          ng-options="item.value as item.text for item in vm.genderOptions"
-        >
-        </select>
+          bs-options="item.value as item.text for item in vm.genderOptions"
+          bs-select>
+        </button>
       </div>
       <div class="col-md-12">
         <input ng-required="vm.model.gender === 1"
@@ -71,13 +75,17 @@
                placeholder="Születési név"/>
       </div>
       <div class="col-md-12">
-        <select
+        <button
+          type="button"
+          class="btn btn-default"
           name="interest"
           id="interest"
           ng-model="vm.model.interest"
-          ng-options="item.value as (item.text | unaccent | lowercase) for item in vm.interestOptions | orderBy:'text | unaccent'"
-        >
-        </select>
+          data-html="1"
+          data-toggle="true"
+          bs-options="item.value as (item.text | unaccent | lowercase) for item in vm.interestOptions | orderBy:'text | unaccent'"
+          bs-select>
+        </button>
       </div>
 
       <p>
