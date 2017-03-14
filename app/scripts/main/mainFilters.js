@@ -1,13 +1,15 @@
-app.filter('unaccent', function()  {
-  return function(input) {
-    if (input && input.map) {
-      return input.map(item => {
-        return {
+app.filter('unaccent', function () {
+  return function (input) {
+    if(input && input.map){
+      var output = [];
+      input.forEach((item) => {
+        output.push({
           text: filterString(item.text),
           value: item.value
-        };
+        });
       });
-    } else if (typeof  input == 'string') {
+      return output;
+    } else if(typeof input == 'string'){
       return filterString(input);
     } else {
       return input;
@@ -16,23 +18,23 @@ app.filter('unaccent', function()  {
     function filterString(s) {
       return s
         .replace(/á/g, 'a')
-        .replace(/í/g, 'i')
-        .replace(/ű/g, 'u')
         .replace(/é/g, 'e')
-        .replace(/ú/g, 'u')
-        .replace(/ő/g, 'o')
+        .replace(/í/g, 'i')
         .replace(/ó/g, 'o')
-        .replace(/ü/g, 'u')
         .replace(/ö/g, 'o')
+        .replace(/ő/g, 'o')
+        .replace(/ú/g, 'u')
+        .replace(/ü/g, 'u')
+        .replace(/ű/g, 'u')
         .replace(/Á/g, 'A')
-        .replace(/Í/g, 'I')
-        .replace(/Ű/g, 'U')
         .replace(/É/g, 'E')
-        .replace(/Ú/g, 'U')
-        .replace(/Ő/g, 'O')
+        .replace(/Í/g, 'I')
         .replace(/Ó/g, 'O')
+        .replace(/Ö/g, 'O')
+        .replace(/Ő/g, 'O')
+        .replace(/Ú/g, 'U')
         .replace(/Ü/g, 'U')
-        .replace(/Ö/g, 'O');
+        .replace(/Ű/g, 'U');
     }
   }
-})
+});

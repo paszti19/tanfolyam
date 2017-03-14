@@ -1,0 +1,54 @@
+<div>
+  <form novalidate name="editForm" ng-submit="vm.save()">
+    <div class="row">
+      <div class="col-md-4 col-sm-6">
+        <div class="form-group">
+          <label for="name">Név:</label>
+          <input required
+                 ng-maxlength="5"
+                 ng-model="$resolve.user.name"
+                 type="text"
+                 name="name"
+                 class="form-control"
+                 id="name"
+                 placeholder="Név"/>
+          <div ng-messages="registrationForm.name.$error" role="alert">
+            <div ng-message="required">Kötelező mező!</div>
+            <div ng-message="maxlength">Túl hosszú a mező</div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4 col-sm-6">
+        <div class="form-group">
+          <label for="email">Email address</label>
+          <input
+            type="email"
+            ng-model="$resolve.user.email"
+            class="form-control"
+            id="email"
+            name="email"
+            placeholder="Email" />
+        </div>
+      </div>
+      <div class="col-md-12">
+        <select
+          name="gender"
+          id="gender"
+          ng-model="$resolve.user.gender"
+          required
+          ng-options="item.value as item.text for item in vm.DropdownValues._values['gender']"
+        >
+        </select>
+      </div>
+      <div class="col-md-12">
+        <input ng-required="$resolve.user.gender === 1"
+               ng-model="$resolve.user.birthName"
+               ng-model-options="{ updateOn: 'blur' }"
+               type="text"
+               name="birthName"
+               class="form-control"
+               id="birthName"
+               placeholder="Születési név"/>
+      </div>
+    </div>
+</div>

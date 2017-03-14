@@ -2,28 +2,30 @@ app.controller('mainController', MainController);
 
 MainController.$inject = ['$timeout'];
 
-function MainController ($timeout) {
+
+function MainController($timeout) {
   var vm = this;
 
   vm.menuItems = [
     {
-      id: 1,
-      title: 'Home'
+      title: 'Home',
+      id: 1
     },
     {
-      id: 2,
-      title: 'About'
+      title: 'About',
+      id: 2
     },
     {
-      id: 3,
-      title: 'Contact'
+      title: 'Contact',
+      id: 3
     }
   ];
 
   $timeout(() => {
     vm.menuItems.push({
-      id: 4,
-      title: 'Registration'
+      title: 'Registration',
+      id: 4
     });
   }, 3000);
+
 }

@@ -1,42 +1,42 @@
-app.controller('registrationController', function ($filter, $http) {
-  var vm = this;
+app.controller('registrationController',
+  function ($filter, registrationRS, userRS, $stateParams) {
+    var vm = this;
 
-  vm.model = {
-    name: 'Gipsz Ágoston'
-  };
+    vm.model = {
+      "name": "Gábor",
+      "password": "asdadAAAA",
+      "email": "asdasd@asdasd.hu",
+      "gender": 0,
+      "birthName": "Gábor",
+      "interest": 2
+    };
 
-  vm.interestOptions = [
-    { text: 'Állatok', value: 1 },
-    { text: 'Olvasás', value: 2 },
-    { text: 'IT világ', value: 3 },
-    { text: 'Pszichológia', value: 4 },
-    { text: 'Tudományok', value: 5 }
-  ];
+    vm.interestOptions = [
+      {text: 'Állatok', value: 1},
+      {text: 'Olvasás', value: 2},
+      {text: 'IT világ', value: 3},
+      {text: 'Pszichológia', value: 4},
+      {text: 'Tudományok', value: 5}
+    ];
 
-  vm.genderOptions = [
-    { text: 'Férfi', value: 0 },
-    { text: 'Nő', value: 1 }
-  ];
+    vm.genderOptions = [
+      {text: 'Férfi', value: 0},
+      {text: 'Nő', value: 1}
+    ];
 
-  vm.name2 = $filter('unaccent')(vm.model.name);
+    vm.name2 = $filter('unaccent')(vm.model.name);
 
-  vm.register = function () {
-    console.log('register');
+    vm.register = function () {
+      console.table(vm.model);
 
+      registrationRS.register(
+        vm.model,
+        (resp) => {
+          console.log(resp);
+          alert('Siker!');
+        }
+      );
+    };
 
-    console.log(vm.model);
+  });
 
-    $http.post(
-      'http://localhost:10010/registration',
-      vm.model
-    ).then(
-      function(response) {
-        console.log(response);
-      },
-      function(error) {
-        console.log(error);
-      }
-    );
-
-  }
-});

@@ -1,4 +1,4 @@
-
+// console.log('\'Allo \'Allo!');
 
 // var arr = [];
 // for(let i = 0; i < 5; i++){
@@ -58,12 +58,12 @@
 // console.log(gabor.getName());
 
 
-/*$('select[multiple]').selectpicker({
+/*$('select').selectpicker({
   size: 4
 });*/
 
-/*
-$("#custom").spectrum({
+
+/*$("#custom").spectrum({
   color: "#f00",
   move: color => {
     $('body').css('background-color', color.toHexString());
@@ -84,9 +84,101 @@ $('.phonecaller-wrapper').phonecaller({
   change: function (num) {
     console.log(num);
   }
+});*/
+
+
+var app = angular.module('tanfolyamApp', ['ngMessages', 'ngResource', 'ui.router', 'ui.grid', 'pascalprecht.translate']);
+
+app.config(function (registrationRS3Provider) {
+  registrationRS3Provider.setBaseUrl('http://localhost:10010');
 });
-*/
 
+app.config(function ($httpProvider) {
+  var counter = 0;
 
-var app = angular.module('tanfolyamApp', ['ngMessages']);
+  var interceptor = function () {
+    function toggleLayer(){
+      if(counter > 0){
+        $('#layer').show();
+      } else {
+        $('#layer').hide();
+      }
+    }
+
+    return {
+      request: function (config) {
+        counter++;
+        toggleLayer();
+        return config;
+      },
+
+      response: function (response) {
+        counter--;
+        toggleLayer();
+        return response;
+      },
+
+      responseError: function (rejection) {
+        counter--;
+        toggleLayer();
+        return rejection;
+      }
+    };
+  };
+
+  $httpProvider.interceptors.push(interceptor);
+});
+
+app.config(function ($stateProvider, $urlRouterProvider) {
+  $urlRouterProvider.otherwise('/404');
+
+  $stateProvider
+    .state({
+      name: 'registration',
+      url: '/registration',
+      templateUrl: 'templates/registration.html'
+    })
+    .state({
+      name: 'edit',
+      url: '/edit/{userId}',
+      templateUrl: 'templates/edit.html',
+      controller: 'editController',
+      controllerAs: 'vm',
+      resolve: {
+        user: function (userRS, $stateParams) {
+          return userRS.get({ id: $stateParams.userId });
+        }
+      }
+    })
+    .state({
+      name: 'password',
+      url: '/password',
+      templateUrl: 'templates/password.html',
+      controller: 'passwordController',
+      controllerAs: 'vm'
+    })
+    .state({
+      name: 'list',
+      url: '/list',
+      templateUrl: 'templates/list.html',
+      controller: 'listController',
+      controllerAs: 'vm'
+    })
+    .state({
+      name: '404',
+      url: '/404',
+      template: '<p>Nem létező oldal</p>'
+    });
+});
+
+app.config(function ($translateProvider) {
+  $translateProvider.useStaticFilesLoader({
+    prefix: 'i18n/locale-',
+    suffix: '.json'
+  });
+
+  $translateProvider.preferredLanguage('hu');
+  $translateProvider.fallbackLanguage('hu');
+});
+
 

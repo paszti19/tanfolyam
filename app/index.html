@@ -11,8 +11,9 @@
 
   <!-- build:css styles/vendor.css -->
   <!-- bower:css -->
-  <link rel="stylesheet" href="/bower_components/spectrum/spectrum.css" />
   <link rel="stylesheet" href="/bower_components/bootstrap-select/dist/css/bootstrap-select.css" />
+  <link rel="stylesheet" href="/bower_components/spectrum/spectrum.css" />
+  <link rel="stylesheet" href="/bower_components/angular-ui-grid/ui-grid.css" />
   <!-- endbower -->
   <!-- endbuild -->
 
@@ -24,6 +25,9 @@
 
 </head>
 <body ng-app="tanfolyamApp" ng-cloak>
+
+<div id="layer"></div>
+
 <!--[if IE]>
 <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade
   your browser</a> to improve your experience.</p>
@@ -31,15 +35,17 @@
 
 <div class="container" ng-controller="mainController as mainVm">
   <div class="header">
+    <p translate="TEST"></p>
     <ul class="nav nav-pills pull-right">
-      <li ng-class="{'active': $index == 0}" ng-repeat="item in mainVm.menuItems track by item.id">
+      <li ng-class="{'active': $index == 0}" ng-repeat="item in mainVm.menuItems">
         <a href="#">{{ item.title }}</a>
       </li>
     </ul>
     <h3 class="text-muted">tanfolyam</h3>
   </div>
 
-  <div ng-include="'templates/registration.html'"></div>
+  <ui-view></ui-view>
+
 
   <div class="footer">
     <p>♥ from the Yeoman team</p>
@@ -49,10 +55,15 @@
 <!-- build:js scripts/vendor.js -->
 <!-- bower:js -->
 <script src="/bower_components/jquery/dist/jquery.js"></script>
-<script src="/bower_components/spectrum/spectrum.js"></script>
 <script src="/bower_components/bootstrap-select/dist/js/bootstrap-select.js"></script>
+<script src="/bower_components/spectrum/spectrum.js"></script>
 <script src="/bower_components/angular/angular.js"></script>
 <script src="/bower_components/angular-messages/angular-messages.js"></script>
+<script src="/bower_components/angular-resource/angular-resource.js"></script>
+<script src="/bower_components/angular-ui-router/release/angular-ui-router.js"></script>
+<script src="/bower_components/angular-ui-grid/ui-grid.js"></script>
+<script src="/bower_components/angular-translate/angular-translate.js"></script>
+<script src="/bower_components/angular-translate-loader-static-files/angular-translate-loader-static-files.js"></script>
 <!-- endbower -->
 <!-- endbuild -->
 
@@ -77,10 +88,18 @@
 <script src="scripts/main.js"></script>
 <!-- endbuild -->
 
+
 <script src="scripts/main/mainFilters.js"></script>
+<script src="scripts/main/mainServices.js"></script>
+<script src="scripts/user/listServices.js"></script>
 <script src="scripts/main/validationDirectives.js"></script>
+<script src="scripts/registration/registrationServices.js"></script>
+
 <script src="scripts/main/mainController.js"></script>
+<script src="scripts/user/editController.js"></script>
+<script src="scripts/user/listController.js"></script>
 <script src="scripts/registration/registrationController.js"></script>
+
 <script src="scripts/validate.js"></script>
 </body>
 </html>
