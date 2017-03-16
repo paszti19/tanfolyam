@@ -51,5 +51,7 @@ app.controller('registrationController',
       );
     };
 
+    vm.phoneNumber = '+3611111111';
+
   });
 

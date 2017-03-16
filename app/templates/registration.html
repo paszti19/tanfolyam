@@ -1,6 +1,12 @@
 <div ng-controller="registrationController as vm" ng-init="mainVm.onLanguageChange = vm.switchLang">
   <form novalidate name="registrationForm" ng-submit="vm.register()">
     <div class="row">
+      <div class="col-md-6">
+        <phone-caller name="telefonszam" model="vm.phoneNumber"></phone-caller>
+        <p>Komponensen kívül: {{ vm.phoneNumber }}</p>
+      </div>
+    </div>
+    <div class="row">
       <div class="col-md-4 col-sm-6">
         <div class="form-group">
           <label for="name">{{ 'REGISTRATION.NAME' | translate }}:</label>
@@ -126,11 +132,6 @@
             <input value="X" required type="checkbox" name="approve" id="approve"> {{ 'REGISTRATION.APPROVE' | translate }}
           </label>
         </div>
-      </div>
-    </div>
-    <div class="row">
-      <div class="col-md-6">
-        <phone-caller></phone-caller>
       </div>
     </div>
 
