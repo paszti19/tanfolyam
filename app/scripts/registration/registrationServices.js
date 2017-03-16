@@ -1,4 +1,13 @@
-app.service('registrationRS2', function ($http) {
+angular.module('tanfolyamApp').service('registrationRS2', RegistrationRS2);
+angular.module('tanfolyamApp').factory('registrationRS', RegistrationRS);
+angular.module('tanfolyamApp').provider('registrationRS3', RegistrationRS3);
+angular.module('tanfolyamApp').factory('userRS', UserRS);
+
+RegistrationRS2.$inject = ['$http'];
+RegistrationRS.$inject = ['$resource'];
+UserRS.$inject = ['$resource'];
+
+function RegistrationRS2($http) {
   var base_url = 'http://localhost:10010';
 
   this.register = function (data, cb) {
@@ -12,21 +21,26 @@ app.service('registrationRS2', function ($http) {
       console.log(error);
     });
   }
-});
-
-app.factory('registrationRS', function ($resource) {
+}
+function RegistrationRS($resource) {
   var base_url = 'http://localhost:10010';
 
   return $resource(base_url + '/registration', {},
     {
-      "register": { method: 'POST' }
+      'register': { method: 'POST' }
     });
-});
-
-app.provider('registrationRS3', function () {
+}
+function RegistrationRS3() {
   this.baseUrl = '';
 
-  this.$get = function ($http) {
+  RegRS3.$inject = ['$http'];
+  this.$get = RegRS3;
+
+  this.setBaseUrl = function (_baseUrl) {
+    this.baseUrl = _baseUrl;
+  };
+
+  function RegRS3($http) {
     var baseUrl = this.baseUrl;
     return {
       register: function (data, cb) {
@@ -41,22 +55,15 @@ app.provider('registrationRS3', function () {
         });
       }
     };
-  };
+  }
 
-  this.setBaseUrl = function (_baseUrl) {
-    this.baseUrl = _baseUrl;
-  };
-
-});
-
-
-
-app.factory('userRS', function ($resource) {
+}
+function UserRS($resource) {
   var base_url = 'http://localhost:10010';
 
   return $resource(base_url + '/user/:id', {id: '@id'},
     {
-      "get": { method: 'get' },
-      "put": { method: 'put' }
+      'get': { method: 'get' },
+      'put': { method: 'put' }
     });
-});
+}

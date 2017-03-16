@@ -1,4 +1,4 @@
-app.controller('mainController', MainController);
+angular.module('tanfolyamApp').controller('mainController', MainController);
 
 MainController.$inject = ['$translate', '$scope', '$timeout', '$rootScope', 'localStorageService'];
 

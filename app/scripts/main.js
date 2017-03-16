@@ -87,13 +87,29 @@ $('.phonecaller-wrapper').phonecaller({
 });*/
 
 
-var app = angular.module('tanfolyamApp', ['ngMessages', 'ngResource', 'ui.router', 'ui.grid', 'pascalprecht.translate', 'mgcrea.ngStrap', 'ngSanitize', 'LocalStorageModule']);
+angular.module('tanfolyamApp', ['ngMessages', 'ngResource', 'ui.router', 'ui.grid', 'pascalprecht.translate', 'mgcrea.ngStrap', 'ngSanitize', 'LocalStorageModule'])
 
-app.config(function (registrationRS3Provider) {
+.config(Config1)
+
+.config(Config2)
+
+.config(Config3)
+
+.config(Config4)
+
+.config(Config5);
+
+
+Config1.$inject = ['registrationRS3Provider'];
+Config2.$inject = ['$httpProvider'];
+Config3.$inject = ['$stateProvider', '$urlRouterProvider'];
+Config4.$inject = ['$translateProvider'];
+Config5.$inject = ['localStorageServiceProvider'];
+
+function Config1(registrationRS3Provider) {
   registrationRS3Provider.setBaseUrl('http://localhost:10010');
-});
-
-app.config(function ($httpProvider) {
+}
+function Config2($httpProvider) {
   var counter = 0;
 
   var interceptor = function () {
@@ -127,9 +143,8 @@ app.config(function ($httpProvider) {
   };
 
   $httpProvider.interceptors.push(interceptor);
-});
-
-app.config(function ($stateProvider, $urlRouterProvider) {
+}
+function Config3($stateProvider, $urlRouterProvider) {
   $urlRouterProvider.when('', '/list');
   $urlRouterProvider.otherwise('/404');
 
@@ -170,9 +185,8 @@ app.config(function ($stateProvider, $urlRouterProvider) {
       url: '/404',
       template: '<p>Nem létező oldal</p>'
     });
-});
-
-app.config(function ($translateProvider) {
+}
+function Config4($translateProvider) {
   $translateProvider.useStaticFilesLoader({
     prefix: 'i18n/locale-',
     suffix: '.json'
@@ -185,11 +199,8 @@ app.config(function ($translateProvider) {
 
   $translateProvider.preferredLanguage(defaultLang);
   $translateProvider.fallbackLanguage(defaultLang);
-});
-
-app.config(function (localStorageServiceProvider) {
+}
+function Config5(localStorageServiceProvider) {
   localStorageServiceProvider
     .setPrefix('tanfolyam-');
-});
-
-
+}

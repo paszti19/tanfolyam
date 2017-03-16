@@ -1,4 +1,4 @@
-app.filter('unaccent', function () {
+angular.module('tanfolyamApp').filter('unaccent', function () {
   return function (input) {
     if(input && input.map){
       var output = [];

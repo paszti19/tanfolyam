@@ -1,4 +1,8 @@
-app.controller('listController', function (listRS) {
+angular.module('tanfolyamApp').controller('listController', ListController);
+
+ListController.$inject = ['listRS'];
+
+function ListController(listRS) {
   var vm = this;
 
   vm.tableOpts = {
@@ -29,4 +33,4 @@ app.controller('listController', function (listRS) {
 
 
 
-});
+}

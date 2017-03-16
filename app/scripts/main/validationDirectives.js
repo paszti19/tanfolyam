@@ -1,4 +1,4 @@
-app.directive('validatePassword', function () {
+angular.module('tanfolyamApp').directive('validatePassword', function () {
   return {
     require: 'ngModel',
     restrict: 'A',
