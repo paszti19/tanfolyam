@@ -2,8 +2,8 @@
   <form novalidate name="registrationForm" ng-submit="vm.register()">
     <div class="row">
       <div class="col-md-6">
-        <phone-caller name="telefonszam" model="vm.phoneNumber"></phone-caller>
-        <p>Komponensen kívül: {{ vm.phoneNumber }}</p>
+        <phone-caller name="telefonszam" cc="vm.cc" number="vm.number"></phone-caller>
+        <p>Komponensen kívül: +{{vm.cc}} {{vm.number}}</p>
       </div>
     </div>
     <div class="row">

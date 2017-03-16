@@ -4,7 +4,7 @@
     <div class="panel-body">
       <div class="row">
         <div class="col-xs-12">
-          <select>
+          <select ng-model="$ctrl.cc">
             <option data-countryCode="DZ" value="213">Algeria (+213)</option>
             <option data-countryCode="AD" value="376">Andorra (+376)</option>
             <option data-countryCode="AO" value="244">Angola (+244)</option>
@@ -223,51 +223,22 @@
         </div>
         <div class="col-xs-12 call-surface">
           <div class="row">
-            <div class="col-xs-2 col-xs-offset-3">
-              <button class="btn btn-danger">1</button>
-            </div>
-            <div class="col-xs-2">
-              <button class="btn btn-danger">2</button>
-            </div>
-            <div class="col-xs-2">
-              <button class="btn btn-danger">3</button>
-            </div>
-          </div>
-          <div class="row">
-            <div class="col-xs-2 col-xs-offset-3">
-              <button class="btn btn-danger">4</button>
-            </div>
-            <div class="col-xs-2">
-              <button class="btn btn-danger">5</button>
-            </div>
-            <div class="col-xs-2">
-              <button class="btn btn-danger">6</button>
-            </div>
-          </div>
-          <div class="row">
-            <div class="col-xs-2 col-xs-offset-3">
-              <button class="btn btn-danger">7</button>
-            </div>
-            <div class="col-xs-2">
-              <button class="btn btn-danger">8</button>
-            </div>
-            <div class="col-xs-2">
-              <button class="btn btn-danger">9</button>
-            </div>
-          </div>
-          <div class="row">
-            <div class="col-xs-2 col-xs-offset-5">
-              <button class="btn btn-danger">0</button>
-            </div>
-            <div class="col-xs-2">
-              <button class="btn btn-danger"><</button>
+            <div
+              ng-class="{ 'col-xs-offset-3': ($index % 3 == 0) }"
+              class="col-xs-2"
+              ng-repeat="item in $ctrl.callerModel">
+              <a
+                ng-if="item.text !== null"
+                class="btn btn-danger"
+                ng-click="$ctrl.concatToNumber(item.text)"
+              >{{ item.text }}</a>
             </div>
           </div>
         </div>
         <div class="col-xs-12">
           <div class="form-group">
             <label>Telefonszám:</label>
-            <input disabled ng-model="$ctrl.model" type="text" class="form-control" />
+            <p>{{ $ctrl.getNumber() }}</p>
           </div>
         </div>
       </div>
