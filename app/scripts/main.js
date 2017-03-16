@@ -178,7 +178,11 @@ app.config(function ($translateProvider) {
     suffix: '.json'
   });
 
-  var defaultLang = JSON.parse(localStorage['tanfolyam-.lang'] || 'hu');
+  var defaultLang = 'hu';
+  if(localStorage.getItem('tanfolyam-.lang')){
+    defaultLang = JSON.parse(localStorage['tanfolyam-.lang']);
+  }
+
   $translateProvider.preferredLanguage(defaultLang);
   $translateProvider.fallbackLanguage(defaultLang);
 });
