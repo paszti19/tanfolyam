@@ -5,6 +5,8 @@ const browserSync = require('browser-sync').create();
 const del = require('del');
 const wiredep = require('wiredep').stream;
 const runSequence = require('run-sequence');
+const angularFilesort = require('gulp-angular-filesort');
+const inject = require('gulp-inject');
 
 const $ = gulpLoadPlugins();
 const reload = browserSync.reload;
@@ -66,7 +68,7 @@ gulp.task('lint:test', () => {
     .pipe(gulp.dest('test/spec'));
 });
 
-gulp.task('html', ['styles', 'scripts'], () => {
+gulp.task('html', ['styles', 'scripts', 'templatecache', 'inject'], () => {
   return gulp.src('app/*.html')
     .pipe($.useref({searchPath: ['.tmp', 'app', '.']}))
     .pipe($.if(/\.js$/, $.uglify({compress: {drop_console: true}})))
@@ -99,7 +101,8 @@ gulp.task('fonts', () => {
 gulp.task('extras', () => {
   return gulp.src([
     'app/*',
-    '!app/*.html'
+    '!app/*.html',
+    'app/**/i18n/*.json'
   ], {
     dot: true
   }).pipe(gulp.dest('dist'));
@@ -108,7 +111,7 @@ gulp.task('extras', () => {
 gulp.task('clean', del.bind(null, ['.tmp', 'dist']));
 
 gulp.task('serve', () => {
-  runSequence(['clean', 'wiredep'], ['styles', 'scripts', 'fonts'], () => {
+  runSequence(['clean', 'wiredep'], ['styles', 'scripts', 'inject', 'fonts'], () => {
     browserSync.init({
       notify: false,
       port: 9000,
@@ -127,7 +130,7 @@ gulp.task('serve', () => {
     ]).on('change', reload);
 
     gulp.watch('app/**/*.scss', ['styles']);
-    gulp.watch('app/**/*.js', ['scripts']);
+    gulp.watch('app/**/*.js', ['scripts', 'inject']);
     gulp.watch('app/fonts/**/*', ['fonts']);
     gulp.watch('bower.json', ['wiredep', 'fonts']);
   });
@@ -188,4 +191,23 @@ gulp.task('default', () => {
     dev = false;
     runSequence(['clean', 'wiredep'], 'build', resolve);
   });
+});
+
+gulp.task('templatecache', () => {
+  gulp.src('app/templates/**/*.html')
+    .pipe($.angularTemplatecache({
+      root: 'templates/',
+      module: 'tanfolyamApp'
+    }))
+    .pipe(gulp.dest('app/scripts'))
+});
+
+gulp.task('inject', () => {
+  var sortedSources = gulp.src('app/scripts/**/*.js')
+    .pipe($.babel())
+    .pipe(angularFilesort());
+
+  return gulp.src('app/index.html')
+    .pipe(inject(sortedSources, { relative: true }))
+    .pipe(gulp.dest('app'));
 });

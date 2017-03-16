@@ -204,3 +204,11 @@ function Config5(localStorageServiceProvider) {
   localStorageServiceProvider
     .setPrefix('tanfolyam-');
 }
+//
+// angular.module('tanfolyamApp').run(Run);
+//
+// Run.$inject = ['$templateCache'];
+//
+// function Run($templateCache){
+//   $templateCache.put('templates/registration.html', '<div class="cache-proba">PROBA</div>');
+// }
